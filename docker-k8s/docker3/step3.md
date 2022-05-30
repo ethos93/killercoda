@@ -6,7 +6,8 @@ Go 언어에 대해 익숙하신 분도 계시고, 처음 접하시는 분도 �
 이번에는, Go 언어로 작성된 "Hello Docker!!!"를 출력하는 간단한 Docker Image를 생성해 보도록 하겠습니다.
 
 ## Go Application
-Editor 탭에서 HelloDocker.go 파일을 생성하고, 아래 내용으로 파일을 완성합니다.
+`touch HelloDocker.go`{{execute}} 를 통해 HelloDocker.go 파일을 생성하고
+Editor 탭에서 아래 내용으로 파일을 완성합니다.
 
 vi가 익숙하시면 vi를 사용하셔도 됩니다.
 `vi HelloDocker.go`{{execute}}
@@ -23,7 +24,7 @@ func main() {
 원하신다면 go code를 직접 수정해 보셔도 좋습니다.
 
 ## Dockerfile 수정
-Dockerfile을 아래와 같이 수정합니다.
+Editor 탭에서 Dockerfile을 아래와 같이 수정합니다.
 
 역시 vi가 익숙하시면 vi를 사용하셔도 됩니다.
 `vi Dockerfile`{{execute}}
