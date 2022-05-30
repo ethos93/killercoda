@@ -1,12 +1,9 @@
 우선 가장 기본 단위인 POD를 생성하여 보겠습니다.
 
-첫번째 실습을 위해 디렉토리를 이동합니다.
+`touch pod.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 pod.yaml 파일을 완성시키거나, `vi pod.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-`cd /root/lab`{{execute}}
-
-다음을 선택하여 에디터를 통해 파일을 열거나 `pod.yaml`{{open}} , `vi pod.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
-
-<pre class="file" data-filename="pod.yaml" data-target="replace">apiVersion: v1
+```yaml
+apiVersion: v1
 kind: Pod
 metadata:
   name: httpd
@@ -20,7 +17,7 @@ spec:
     ports:
     - containerPort: 80
       protocol: TCP
-</pre>
+```
 
 Manifest를 살펴보면, Kind 에는 Object 종류, 그리고 metadata 에는 이름과 Label을 지정하도록 되어 있습니다.
 Spec 에는 Pod에 생성될 container의 spec을 지정하도록 되어 있습니다.
