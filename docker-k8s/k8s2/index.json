@@ -1,8 +1,6 @@
 {
-  "title": "Kubernetes Training 2",
+  "title": "2. Kubernetes Training 2",
   "description": "Kubernetes Deployment Strategies / Horizontal Pod Autoscaler",
-  "difficulty": "Beginner",
-  "time": "10 minutes",
   "details": {
     "steps": [
       {
@@ -38,13 +36,7 @@
       ]
     }
   },
-  "environment": {
-    "uilayout": "editor-terminal",
-    "hideHiddenFiles": true,
-    "uisettings": "yaml",
-    "uieditorpath": "/root/lab"
-  },
   "backend": {
-    "imageid": "kubernetes-cluster-running:1.18"
+    "imageid": "kubernetes-kubeadm-1node"
   }
 }
