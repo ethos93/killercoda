@@ -72,5 +72,5 @@ volume 이 잘 생성되었는지에 대한 확인은 volume ls를 하면 됩니
 
 `docker ps`{{execute}} 를 통해서 myjenkins container가 잘 생성되었는지 확인할 수 있습니다.
 
-그리고 Port 8080 탭을 눌러보시면 Jenkins가 web UI로 구동되어있는 것을 확인할 수 있습니다. (조금 시간이 걸릴 수 있습니다)
+그리고 [Jenkins]({{TRAFFIC_HOST1_8080}}) 눌러보시면 Jenkins가 web UI로 구동되어있는 것을 확인할 수 있습니다. (조금 시간이 걸릴 수 있습니다)
 
