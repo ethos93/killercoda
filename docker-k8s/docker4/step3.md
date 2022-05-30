@@ -10,9 +10,6 @@ app.js 및 Dockerfile을 생성 해 주어야 합니다.
 
 app.js 에서, const hostname = '127.0.0.1'; 부분을 const hostname = '0.0.0.0'; 으로 변경해 주셔야 localhost 이외의 요청에 응답이 가능합니다.
 
-vi 를 통해 직접 파일을 생성, 편집하시거나, 아래 명령을 통해 file을 생성한 뒤에 Editor를 통해 편집하실 수 있습니다.
-
-`touch app.js`{{execute}}
-`touch Dockerfile`{{execute}}
+app.js 파일과 Dockerfile은 vi를 통해 생성하거나 Editor를 통해 생성하시면 됩니다.
 
 node.js에서 환경변수값을 읽어오는 방법은, process.env.변수명 를 사용하시면 됩니다.
