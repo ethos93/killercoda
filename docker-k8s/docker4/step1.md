@@ -1,9 +1,5 @@
 이번에는 직접 간단한 Web Application Image를 생성하고 구동시켜보는 실습을 진행하겠습니다.
 
-실습을 위해 디렉토리를 이동합니다.
-
-`cd /root/lab`{{execute}}
-
 ## 사용 언어 및 Framework
 
 만들어 볼 Web Application은 Java Spring Boot, Node.js, Python 어느것으로 작성하여도 무방하며, 이외에도 본인이 직접 작성할 수 있는 Application이 있다면 자유롭게 작성하셔도 상관없습니다.
@@ -34,4 +30,4 @@
 
 아래 링크를 클릭하여 서버가 80 포트에서 정상 동작하는 지 확인해 주세요.
 
-https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com
+[Web Application]({{TRAFFIC_HOST1_80}})
