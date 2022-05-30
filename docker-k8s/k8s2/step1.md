@@ -14,9 +14,10 @@ Kubernetes가 정상적으로 구동이 되었는지 확인을 한 뒤에 메트
 
 Kubernetes Deployment 전략을 지정하고 Rollback을 실습하기 위해 앞서 생성했던 것과 동일한 Deployment를 생성해 보겠습니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `deployment.yaml`{{open}} , `vi deployment.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch deployment.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 deployment.yaml 파일을 완성시키거나, `vi deployment.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="deployment.yaml" data-target="replace">apiVersion: apps/v1
+```yaml
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: httpd-deployment
@@ -44,15 +45,16 @@ spec:
         ports:
         - containerPort: 80
           protocol: TCP
-</pre>
+```
 
 이제 `kubectl apply -f deployment.yaml`{{execute}} 명령을 통해 Deployment 을 생성합니다.
 
 다음으로, 앞서 작성한 것과 동일한 NodePort Type의 서비스도 생성해 보겠습니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `nodeport_svc.yaml`{{open}} , `vi nodeport_svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch nodeport_svc.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 nodeport_svc.yaml 파일을 완성시키거나, `vi nodeport_svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="nodeport_svc.yaml" data-target="replace">apiVersion: v1
+```yaml
+apiVersion: v1
 kind: Service
 metadata:
   name: httpd-nodeport-service
@@ -64,7 +66,7 @@ spec:
       port: 80
       targetPort: 80
   type: NodePort
-</pre>
+```
 
 `kubectl apply -f nodeport_svc.yaml`{{execute}}
 
