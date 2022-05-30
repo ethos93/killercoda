@@ -55,16 +55,17 @@ yaml 파일로도 생성할 수 있으며, key:value를 여러쌍 포함시킬 �
 
 단, configmap과 달리 secret을 생성할 때는, value를 base64 encoding한 값으로 작성해야만 합니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `yaml-secret.yaml`{{open}} , `vi yaml-secret.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch yaml-secret.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 yaml-secret.yaml 파일을 완성시키거나, `vi yaml-secret.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="yaml-secret.yaml" data-target="replace">apiVersion: v1
+```yaml
+apiVersion: v1
 kind: Secret
 metadata:
   name: yaml-secret
 data:
   location: SmFtc2ls
   business: SVRTZXJ2aWNl
-</pre>
+```
 
 location의 value는 Jamsil 을 base64 encoding 한 값이며, business의 value는 ITService를 base64 encoding 한 값입니다.
 
@@ -85,9 +86,10 @@ Secret은 Pod에서 환경변수로 넘길수가 있습니다.
 
 Secret의 Key와 Value를 Pod으로 전달하는 yaml를 작성해 보겠습니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `secretpod.yaml`{{open}} , `vi secretpod.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch secretpod.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 secretpod.yaml 파일을 완성시키거나, `vi secretpod.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="secretpod.yaml" data-target="replace">apiVersion: v1
+```yaml
+apiVersion: v1
 kind: Pod
 metadata:
   name: secret-pod
@@ -123,7 +125,7 @@ spec:
       secret:
         secretName: file-secret
   restartPolicy: Never
-</pre>
+```
 
 Manifest를 보면, 아주 가벼운 busybox shell 만 포함하고 있는 이미지를 사용하며, kubectl cli를 통해 생성했던, literal-secret에서 company키에 해당하는 value를 COMPANY 환경 변수에 담아주고, yaml을 통해 생성했던, yaml-secret에서 location과 business key에 해당하는 value를 LOCATION과 BUSINESS 환경 변수에 담아주도록 하였습니다.
 그리고, 파일로 부터 생성한 file-env-secret의 모든 Key와 Value를 환경 변수에 담아 주고, 마지막으로 file-secret는 Volume으로 정의한 후 /etc/config 경로에 app.properties 파일로 Mount 시켰습니다.
