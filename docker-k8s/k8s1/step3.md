@@ -4,7 +4,7 @@
 
 이를 위해 ReplicatSet이라는 Object가 있습니다. ReplicatSet를 생성해 보도록 하겠습니다.
 
-`touch replicaset.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 pod.yaml 파일을 완성시키거나, `vi replicaset.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch replicaset.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 replicaset.yaml 파일을 완성시키거나, `vi replicaset.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: apps/v1
