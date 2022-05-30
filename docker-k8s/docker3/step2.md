@@ -11,7 +11,8 @@ Dockerfile을 아래와 같이 수정합니다.
 역시 vi가 익숙하시면 vi를 사용하셔도 됩니다.
 `vi Dockerfile`{{execute}}
 
-<pre class="file" data-filename="Dockerfile" data-target="replace">FROM openjdk:8 as build-stage
+```Dockerfile
+FROM openjdk:8 as build-stage
 COPY HelloDocker.java /hello/
 WORKDIR /hello
 RUN javac HelloDocker.java
@@ -20,7 +21,7 @@ FROM openjdk:8-jre as production-stage
 COPY --from=build-stage /hello/HelloDocker.class /hello/HelloDocker.class
 WORKDIR /hello
 CMD ["java","HelloDocker"]
-</pre>
+```
 
 1. openjdk8이 포함된 이미지를 build-stage 로 정하고
 2. /hello 경로에 HelloDocker.java 파일을 복사하고
