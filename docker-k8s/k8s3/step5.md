@@ -101,5 +101,6 @@ Service가 생성되었으니, 이제 nodePort를 확인하고 한번 호출해 
 curl 127.0.0.1:노드포트 를 실행하면 10초마다 달라지는 출력을 확인할 수 있습니다.
 
 아래 링크를 사용하면 브라우저에서도 확인 가능합니다.
+(NodePort 번호를 입력하시면 됩니다)
 
-[Fortune]({{TRAFFIC_HOST1_80}})
+[Fortune]({{TRAFFIC_SELECTOR}})
