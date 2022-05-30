@@ -28,11 +28,13 @@ kubectl create secret generic secret이름 --from-literal=key1=value1 --from-lit
 
 1. MySQL Deployment
 
-`mysql-deployment.yaml`{{open}}
+`touch mysql-deployment.yaml`{{execute}}
 
 2. MySQL Service
 
-`mysql-service.yaml`{{open}}
+`touch mysql-service.yaml`{{execute}}
+
+deployment와 service를 Editor 탭에서 작성하시면 됩니다.
 
 configmap과 secret를 환경변수로 사용하는 방법은 이전 K8S 실습 3번에 포함 되어 있습니다.
 Deployment와 Service Yaml을 작성하는 방법은 K8S 실습 1번에 포함 되어 있습니다.
