@@ -4,7 +4,7 @@ Kubernetes 에서 Deployment는 배포 전략을 지정할 수 있으며, Rollba
 
 이전에 작성하였던 Deployment를 수정해 보도록하겠습니다.
 
-에디터 탭에서 deployment.yaml을 선택하여 여시거나, `vi deployment.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+Editor 탭에서 deployment.yaml을 선택하여 수정하거나, `vi deployment.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
 strategy의 type이 RollingUpdate로 되어 있는 것을 확인할 수 있으며, 여기서 container 이미지의 version을 변경해 보도록 하겠습니다.
 
@@ -25,7 +25,7 @@ ethos93/go-httpd:v1 으로 되어 있는 부분을 ethos93/go-httpd:v2 로 tag�
 
 <kbd>Ctrl</kbd>+<kbd>C</kbd> 를 눌러 curl 명령을 중단 시킵니다.
 
-`^C`{{execute ctrl-seq}}
+`^C`{{execute}}
 
 이제, 다시 Rollback을 수행해 보겠습니다.
 
