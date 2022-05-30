@@ -1,8 +1,6 @@
 {
-  "title": "Docker Practice",
+  "title": "4. Docker Practice",
   "description": "Create Simple Web App Image",
-  "difficulty": "Beginner",
-  "time": "10 minutes",
   "details": {
     "steps": [
       {
@@ -23,19 +21,13 @@
       }
     ],
     "intro": {
-      "text": "intro.md",
-      "courseData": "courseBase.sh"
+      "text": "intro.md"
     },
     "finish": {
       "text": "finish.md"
     }
   },
-  "environment": {
-    "uilayout": "editor-terminal",
-    "hideHiddenFiles": true,
-    "uieditorpath": "/root/lab"
-  },
   "backend": {
-    "imageid": "ubuntu:1804"
+    "imageid": "ubuntu"
   }
 }
