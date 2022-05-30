@@ -4,10 +4,6 @@ ConfigMap은 Key:Value 형식으로 저장이 됩니다.
 
 ## ConfigMap from Literal
 
-첫번째 실습을 위해 디렉토리를 이동합니다.
-
-`cd /root/lab`{{execute}}
-
 문자로 생성하는 방법은 kubectl create configmap 명령을 사용하여 다음과 같이 생성할 수 있습니다.
 
 kubectl create configmap configmap이름 --from-literal=key=value
@@ -33,14 +29,15 @@ literal-config 이라는 이름의 configmap에 key는 company, value는 samsung
 
 우선 Properties 파일을 하나 만들어 봅니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `app.properties`{{open}} , `vi app.properties`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch app.properties`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 app.properties 파일을 완성시키거나, `vi app.properties`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="app.properties" data-target="replace">database.url=192.168.0.88
+```properties
+database.url=192.168.0.88
 database.port=5432
 database.db=employee
 database.user=hojoon
 database.password=elqlvotmdnjem
-</pre>
+```
 
 이제 이 파일을 통해 configmap을 만들어 보겠습니다.
 
@@ -64,16 +61,17 @@ Data 부분에 Key와 Value가 각각 어떻게 저장되었는지 확인할 수
 
 yaml 파일로도 생성할 수 있으며, key:value를 여러쌍 포함시킬 수도 있습니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `yaml-config.yaml`{{open}} , `vi yaml-config.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch yaml-config.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 yaml-config.yaml 파일을 완성시키거나, `vi yaml-config.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="yaml-config.yaml" data-target="replace">apiVersion: v1
+```yaml
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: yaml-config
 data:
   location: Jamsil
   business: ITService
-</pre>
+```
 
 작성된 yaml을 적용하겠습니다.
 `kubectl apply -f yaml-config.yaml`{{execute}}
@@ -88,9 +86,10 @@ ConfigMap은 Pod에서 환경변수로 넘길수가 있습니다.
 
 ConfigMap의 Key와 Value를 Pod으로 전달하는 yaml를 작성해 보겠습니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `configmappod.yaml`{{open}} , `vi configmappod.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch configmappod.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 configmappod.yaml 파일을 완성시키거나, `vi configmappod.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="configmappod.yaml" data-target="replace">apiVersion: v1
+```yaml
+apiVersion: v1
 kind: Pod
 metadata:
   name: configmap-pod
@@ -126,7 +125,7 @@ spec:
       configMap:
         name: file-config
   restartPolicy: Never
-</pre>
+```
 
 Manifest를 보면, 아주 가벼운 busybox shell 만 포함하고 있는 이미지를 사용하며, kubectl cli를 통해 생성했던, literal-config에서 company키에 해당하는 value를 COMPANY 환경 변수에 담아주고, yaml을 통해 생성했던, yaml-config에서 location과 business key에 해당하는 value를 LOCATION과 BUSINESS 환경 변수에 담아주도록 하였습니다.
 그리고, 파일로 부터 생성한 file-env-config의 모든 Key와 Value 환경 변수에 담아 주고, 마지막으로 file-config는 Volume으로 정의한 후 /etc/config 경로에 app.properties 파일로 Mount 시켰습니다.
