@@ -1,8 +1,9 @@
 이번에는 NodePort Type의 서비스를 생성해 보겠습니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `nodeport_svc.yaml`{{open}} , `vi nodeport_svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch nodeport_svc.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 nodeport_svc.yaml 파일을 완성시키거나, `vi nodeport_svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="nodeport_svc.yaml" data-target="replace">apiVersion: v1
+```yaml
+apiVersion: v1
 kind: Service
 metadata:
   name: httpd-nodeport-service
@@ -14,7 +15,7 @@ spec:
       port: 80
       targetPort: 80
   type: NodePort
-</pre>
+```
 
 Manifest를 살펴보면, Kind에는 Service를 지정하였고, Selector에 app: httpd-replicaset 을 지정하였는데, 이것은 앞에서 ReplicaSet 을 생성할 때 Pod의 Label과 일치 합니다.
 
