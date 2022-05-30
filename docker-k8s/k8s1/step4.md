@@ -10,9 +10,10 @@ Deployment는 Image의 버전 변경 시 Update 전략에 따라 RollingUpdate �
 
 Deployment를 생성해 보도록 하겠습니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `deployment.yaml`{{open}} , `vi deployment.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch deployment.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 deployment.yaml 파일을 완성시키거나, `vi deployment.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="deployment.yaml" data-target="replace">apiVersion: apps/v1
+```yaml
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: httpd-deployment
@@ -40,7 +41,7 @@ spec:
         ports:
         - containerPort: 80
           protocol: TCP
-</pre>
+```
 
 Manifest를 살펴보면, Kind 에는 Object 종류, 그리고 metadata 에는 이름과 Label을 지정하도록 되어 있습니다.
 Spec을 보면, strategy 라는게 ReplicaSet에서 추가되었고, RollingUpdate를 지정하는 경우 maxSurge (지정된 복제본 수 이상으로 만들 Pod 수), maxUnavailable (지정된 복제본 수 보다 적게 서비스 될 수 있는 Pod 수)
