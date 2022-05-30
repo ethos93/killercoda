@@ -1,8 +1,9 @@
 ClusterIP Type의 서비스를 생성해 보겠습니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `clusterip_svc.yaml`{{open}} , `vi clusterip_svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch clusterip_svc.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 clusterip_svc.yaml 파일을 완성시키거나, `vi clusterip_svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="clusterip_svc.yaml" data-target="replace">apiVersion: v1
+```yaml
+apiVersion: v1
 kind: Service
 metadata:
   name: httpd-clusterip-service
@@ -14,7 +15,7 @@ spec:
       port: 80
       targetPort: 80
   type: ClusterIP
-</pre>
+```
 
 Manifest를 살펴보면, Kind에는 Service를 지정하였고, Selector에 app: httpd 을 지정하였는데, 이것은 앞에서 Pod을 생성할 때 Pod의 Label과 일치 합니다. 이처럼 Label은 Service와 Pod을 연결시켜주는 매우 중요한 Key 이므로 반드시 일치시켜줘야만 합니다. 복수개의 Label을 지정한다면 좀더 세밀하게 매핑을 지정할 수도 있습니다.
 
