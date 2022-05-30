@@ -1,8 +1,6 @@
 {
-  "title": "Docker Training 2",
+  "title": "2. Docker Training 2",
   "description": "Docker Command",
-  "difficulty": "Beginner",
-  "time": "10 minutes",
   "details": {
     "steps": [
       {
@@ -15,20 +13,13 @@
       }
     ],
     "intro": {
-      "text": "intro.md",
-      "courseData": "courseBase.sh"
+      "text": "intro.md"
     },
     "finish": {
       "text": "finish.md"
     }
   },
-  "environment": {
-    "hideHiddenFiles": true,
-    "showdashboard": true,
-    "dashboards": [{"name": "Port 8080", "port": 8080}],
-    "uilayout": "terminal"
-  },
   "backend": {
-    "imageid": "ubuntu:1804"
+    "imageid": "ubuntu"
   }
 }
