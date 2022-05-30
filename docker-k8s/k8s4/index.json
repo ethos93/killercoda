@@ -1,8 +1,6 @@
 {
-  "title": "Kubernetes Practice",
+  "title": "8. Kubernetes Practice",
   "description": "Deploy Wordpress",
-  "difficulty": "Beginner",
-  "time": "20 minutes",
   "details": {
     "steps": [
       {
@@ -23,20 +21,13 @@
       }
     ],
     "intro": {
-      "text": "intro.md",
-      "courseData": "courseBase.sh"
+      "text": "intro.md"
     },
     "finish": {
       "text": "finish.md"
     }
   },
-  "environment": {
-    "uilayout": "editor-terminal",
-    "hideHiddenFiles": true,
-    "uisettings": "yaml",
-    "uieditorpath": "/root/lab"
-  },
   "backend": {
-    "imageid": "kubernetes-cluster-running:1.18"
+    "imageid": "kubernetes-kubeadm-1node"
   }
 }
