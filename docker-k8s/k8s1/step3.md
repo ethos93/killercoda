@@ -4,9 +4,10 @@
 
 이를 위해 ReplicatSet이라는 Object가 있습니다. ReplicatSet를 생성해 보도록 하겠습니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `replicaset.yaml`{{open}} , `vi replicaset.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch replicaset.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 pod.yaml 파일을 완성시키거나, `vi replicaset.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="replicaset.yaml" data-target="replace">apiVersion: apps/v1
+```yaml
+apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: httpd-replicaset
@@ -29,7 +30,7 @@ spec:
         ports:
         - containerPort: 80
           protocol: TCP
-</pre>
+```
 
 Manifest를 살펴보면, Kind 에는 Object 종류, 그리고 metadata 에는 이름과 Label을 지정하도록 되어 있습니다.
 Spec을 보면, Pod과는 다르게, replicas 라는 것과 selector 라는 것이 있습니다.
