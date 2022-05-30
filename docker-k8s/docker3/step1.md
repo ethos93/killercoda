@@ -13,12 +13,13 @@ lab 경로에 HelloDocker.java 파일이 생성되어 있습니다.
 vi가 익숙하시면 vi를 사용하셔도 됩니다.
 `vi HelloDocker.java`{{execute}}
 
-<pre class="file" data-filename="HelloDocker.java" data-target="replace">public class HelloDocker {
+```java
+public class HelloDocker {
 	public static void main(String[] args) {
 		System.out.println("Hello Docker!!!");
 	}
 }
-</pre>
+```
 
 java로 실행시 "Hello Docker!!!"를 출력하고 종료되는 아주 간단한 Application 입니다.
 원하신다면 Java code를 직접 수정해 보셔도 좋습니다.
@@ -32,12 +33,13 @@ Dockerfile도 에디터로 열려 있으니 수정하시면 자동 저장됩니�
 역시 vi가 익숙하시면 vi를 사용하셔도 됩니다.
 `vi Dockerfile`{{execute}}
 
-<pre class="file" data-filename="Dockerfile" data-target="replace">FROM openjdk:8
+```Dockerfile
+FROM openjdk:8
 COPY HelloDocker.java /hello/
 WORKDIR /hello
 RUN javac HelloDocker.java
 CMD ["java","HelloDocker"]
-</pre>
+```
 
 Dockerfile의 각 라인을 설명하자면,
 1. openjdk8이 포함된 이미지를 생성하며
