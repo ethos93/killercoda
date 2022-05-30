@@ -10,9 +10,6 @@ web.py를 import 하기 위해서는, pip를 통해 web.py 모듈을 설치합�
 
 app.py 및 Dockerfile을 생성 해 주어야 합니다.
 
-vi 를 통해 직접 파일을 생성, 편집하시거나, 아래 명령을 통해 file을 생성한 뒤에 Editor를 통해 편집하실 수 있습니다.
-
-`touch app.py`{{execute}}
-`touch Dockerfile`{{execute}}
+app.py 파일과 Dockerfile은 vi를 통해 생성하거나 Editor를 통해 생성하시면 됩니다.
 
 Python에서 환경변수값을 읽어오는 방법은, import os를 하시고 os.environ['변수명'] 를 사용하시면 됩니다.
