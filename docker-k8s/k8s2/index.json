@@ -1,5 +1,5 @@
 {
-  "title": "2. Kubernetes Training 2",
+  "title": "6. Kubernetes Training 2",
   "description": "Kubernetes Deployment Strategies / Horizontal Pod Autoscaler",
   "details": {
     "steps": [
@@ -36,6 +36,6 @@
     }
   },
   "backend": {
-    "imageid": "kubernetes-kubeadm-2node"
+    "imageid": "kubernetes-kubeadm-2nodes"
   }
 }
