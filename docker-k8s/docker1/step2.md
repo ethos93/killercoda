@@ -3,7 +3,7 @@ Host 에서 Layer를 조회하여 보면 1개의 Layer가 조회되는 것을 �
 ## overlay 이미지 확인
 /var/lib/docker/overlay 경로에 이미지가 조회됩니다.
 
-`ls -1 -t /var/lib/docker/overlay`{{execute}}
+`ls -1 -t /var/lib/docker/overlay2`{{execute}}
 
 ## Docker Container 실행
 `docker run -it --name myubuntu ubuntu /bin/bash`{{execute}}
@@ -16,7 +16,7 @@ Docker Container 환경으로 접속되었으며, os-release 정보를 통해 �
 
 Terminal 1 Tab에서 overlay 이미지를 다시 확인해 봅니다.
 
-`ls -1 -t /var/lib/docker/overlay`{{execute}}
+`ls -1 -t /var/lib/docker/overlay2`{{execute}}
 
 docker run 이전에는 1개의 layer가 있었으나, docker run 이 된 후에는 layer가 하나 추가 된 것을 확인할 수 있습니다.
 
@@ -33,7 +33,7 @@ Docker Container에 접속되어 있는 Terminal Tab에서 아래 명령으로 �
 
 Terminal 1 Tab에서 overlay 이미지를 다시 확인해 봅니다.
 
-`ls -1 -t /var/lib/docker/overlay`{{execute}}
+`ls -1 -t /var/lib/docker/overlay2`{{execute}}
 
 또 다른 layer가 추가된 것을 확인할 수 있으며, commit에 의해 Read Only Layer가 추가된 것입니다.
 
@@ -41,7 +41,7 @@ Terminal 1 Tab에서 overlay 이미지를 다시 확인해 봅니다.
 
 `docker rm -f myubuntu`{{execute}}
 
-다시한번 overlay 이미지를 확인해 보면 `ls -1 -t /var/lib/docker/overlay`{{execute}} Container가 실행되면서 생성되었던 Read Write Layer는 삭제되고 Read Only Layer만 2개가 남은 것을 확인할 수 있습니다.
+다시한번 overlay 이미지를 확인해 보면 `ls -1 -t /var/lib/docker/overlay2`{{execute}} Container가 실행되면서 생성되었던 Read Write Layer는 삭제되고 Read Only Layer만 2개가 남은 것을 확인할 수 있습니다.
 
 마지막으로, 신규로 생성한 이미지도 확인해 봅니다.
 
