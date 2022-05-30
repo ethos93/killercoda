@@ -1,8 +1,9 @@
 마지막으로 LoadBalancer Type의 서비스를 생성해 보겠습니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `loadbalancer_svc.yaml`{{open}} , `vi loadbalancer_svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch loadbalancer_svc.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 loadbalancer_svc.yaml 파일을 완성시키거나, `vi loadbalancer_svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="loadbalancer_svc.yaml" data-target="replace">apiVersion: v1
+```yaml
+apiVersion: v1
 kind: Service
 metadata:
   name: httpd-loadbalancer-service
@@ -14,7 +15,7 @@ spec:
       port: 80
       targetPort: 80
   type: LoadBalancer
-</pre>
+```
 
 Manifest를 살펴보면, Kind에는 Service를 지정하였고, Selector에 app: httpd-deployment 을 지정하였는데, 이것은 앞에서 Deployment 을 생성할 때 Pod의 Label과 일치 합니다.
 
