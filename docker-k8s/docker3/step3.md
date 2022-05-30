@@ -6,7 +6,7 @@ Go 언어에 대해 익숙하신 분도 계시고, 처음 접하시는 분도 �
 이번에는, Go 언어로 작성된 "Hello Docker!!!"를 출력하는 간단한 Docker Image를 생성해 보도록 하겠습니다.
 
 ## Go Application
-lab 경로에 HelloDocker.go 파일이 생성되어 있습니다.
+Editor 탭에서 HelloDocker.go 파일을 생성합니다.
 에디터로 열려 있으며 수정하시면 자동 저장됩니다.
 
 vi가 익숙하시면 vi를 사용하셔도 됩니다.
