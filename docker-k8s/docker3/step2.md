@@ -6,7 +6,7 @@ docker는 multi-stage build 기능을 제공하기 때문에 최종 docker 이�
 HelloDocker.java 파일은 그대로 두고 Dockerfile만 수정해 보겠습니다.
 
 ## Dockerfile 수정
-Dockerfile을 아래와 같이 수정합니다.
+Editor 탭에서 Dockerfile을 아래와 같이 수정합니다.
 
 역시 vi가 익숙하시면 vi를 사용하셔도 됩니다.
 `vi Dockerfile`{{execute}}
