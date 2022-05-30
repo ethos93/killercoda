@@ -7,14 +7,14 @@ Horizontal Pod Autoscaler를 사용하기 위해서는 Pod에 CPU 요청 및 제
 php로 작성되었으며, 요청을 받으면 1~1000000 모든 수의 제곱근을 구한 뒤 Hostname을 응답으로 주는 단순한 웹서버 입니다.
 
 ```php
-&lt;?php
+<?php
   $x = 0.0001;
   for ($i = 0; $i &lt;= 1000000; $i++) {
     $x += sqrt($x);
   }
   echo gethostname();
   echo "\n";
-?&gt;
+?>;
 ```
 
 php 서버를 배포하는 yaml파일을 생성해 보겠습니다.
