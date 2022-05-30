@@ -6,18 +6,18 @@ Go 언어에 대해 익숙하신 분도 계시고, 처음 접하시는 분도 �
 이번에는, Go 언어로 작성된 "Hello Docker!!!"를 출력하는 간단한 Docker Image를 생성해 보도록 하겠습니다.
 
 ## Go Application
-Editor 탭에서 HelloDocker.go 파일을 생성합니다.
-에디터로 열려 있으며 수정하시면 자동 저장됩니다.
+Editor 탭에서 HelloDocker.go 파일을 생성하고, 아래 내용으로 파일을 완성합니다.
 
 vi가 익숙하시면 vi를 사용하셔도 됩니다.
 `vi HelloDocker.go`{{execute}}
 
-<pre class="file" data-filename="HelloDocker.go" data-target="replace">package main
+```go
+package main
 import "fmt"
 func main() {
     fmt.Println("Hello Docker!!!")
 }
-</pre>
+```
 
 실행시 "Hello Docker!!!"를 출력하고 종료되는 아주 간단한 Application 입니다.
 원하신다면 go code를 직접 수정해 보셔도 좋습니다.
@@ -28,7 +28,8 @@ Dockerfile을 아래와 같이 수정합니다.
 역시 vi가 익숙하시면 vi를 사용하셔도 됩니다.
 `vi Dockerfile`{{execute}}
 
-<pre class="file" data-filename="Dockerfile" data-target="replace">FROM golang:1.15.8-buster AS build-stage
+```Dockerfile
+FROM golang:1.15.8-buster AS build-stage
 WORKDIR $GOPATH/src/HelloDocker/
 COPY HelloDocker.go .
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -ldflags="-w -s" -o /hello/HelloDocker
@@ -36,7 +37,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -ldflag
 FROM scratch as production-stage
 COPY --from=build-stage /hello/HelloDocker /hello/HelloDocker
 CMD ["/hello/HelloDocker"]
-</pre>
+```
 
 1. Go SDK이 포함된 이미지를 build-stage 로 정하고
 2. 작업 경로를 GOPATH 아래로 정하여 이동
