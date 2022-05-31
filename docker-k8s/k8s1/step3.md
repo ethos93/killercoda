@@ -4,7 +4,7 @@
 
 이를 위해 ReplicatSet이라는 Object가 있습니다. ReplicatSet를 생성해 보도록 하겠습니다.
 
-`touch replicaset.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 replicaset.yaml 파일을 완성시키거나, `vi replicaset.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch replicaset.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 replicaset.yaml 파일을 완성시키거나, `vi replicaset.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: apps/v1
@@ -39,14 +39,14 @@ replicas는 몇개의 복제본을 만들 것인지를 지정하는 것이고, s
 
 template에는 Pod의 manifest가 그대로 들어갑니다.
 
-이제 `kubectl apply -f replicaset.yaml`{{execute}} 명령을 통해 ReplicaSet 을 생성합니다.
+이제 `kubectl apply -f replicaset.yaml`{{exec}} 명령을 통해 ReplicaSet 을 생성합니다.
 
 명령을 실행 시키면, "replicaset.apps//httpd-replicaset created" 라고 출력되면서 ReplicaSet 이 만들어집니다.
 
-`kubectl get replicasets`{{execute}} 를 통해 생성된 ReplicaSet을 확인할 수 있으며, `kubectl get pods`{{execute}} 를 통해 3개의 Pod가 생성된 것을 확인할 수 있습니다.
+`kubectl get replicasets`{{exec}} 를 통해 생성된 ReplicaSet을 확인할 수 있으며, `kubectl get pods`{{exec}} 를 통해 3개의 Pod가 생성된 것을 확인할 수 있습니다.
 Pod의 이름은 ReplicaSet 이름 - hash 값으로 자동 생성됩니다.
 
 다시 Editor나 vi를 이용하여 replicaset.yaml에서 replicas 값을 3에서 5로 변경해 봅니다.
-`kubectl apply -f replicaset.yaml`{{execute}} 명령을 통해 변경한 값을 적용합니다.
+`kubectl apply -f replicaset.yaml`{{exec}} 명령을 통해 변경한 값을 적용합니다.
 
-`kubectl get pods`{{execute}} 를 통해 Pod 개수가 5개로 변경된 것을 확인할 수 있습니다.
+`kubectl get pods`{{exec}} 를 통해 Pod 개수가 5개로 변경된 것을 확인할 수 있습니다.
