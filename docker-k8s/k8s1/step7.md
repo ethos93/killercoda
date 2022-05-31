@@ -1,6 +1,6 @@
 이번에는 NodePort Type의 서비스를 생성해 보겠습니다.
 
-`touch nodeport_svc.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 nodeport_svc.yaml 파일을 완성시키거나, `vi nodeport_svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch nodeport_svc.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 nodeport_svc.yaml 파일을 완성시키거나, `vi nodeport_svc.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: v1
@@ -23,11 +23,11 @@ Type을 보면 NodePort로 지정되어 있습니다.
 
 apply로 yaml 파일을 통해 object를 생성해 보겠습니다.
 
-`kubectl apply -f nodeport_svc.yaml`{{execute}}
+`kubectl apply -f nodeport_svc.yaml`{{exec}}
 
 명령을 실행 시키면, "service/httpd-nodeport-service created" 라고 출력되면서 서비스가 만들어집니다.
 
-`kubectl get services`{{execute}} 를 통해 httpd-nodeport-service 라는 서비스가 추가로 생성된 것을 확인할 수 있습니다.
+`kubectl get services`{{exec}} 를 통해 httpd-nodeport-service 라는 서비스가 추가로 생성된 것을 확인할 수 있습니다.
 
 <pre>
 NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
@@ -45,9 +45,9 @@ Kubernetes Cluster를 구성하는 모든 Node에 동일한 Port가 오픈되며
 
 Kubernetes Cluster의 IP는 다음과 같이 확인할 수 있습니다.
 
-`kubectl get nodes -o wide`{{execute}}
+`kubectl get nodes -o wide`{{exec}}
 
-master node와 node01 node의 IP를 확인할 수 있습니다.
+controlplane node와 node01 node의 IP를 확인할 수 있습니다.
 이제 확인된 IP로 서비스를 호출해 봅니다.
 
 curl {node ip}:NodePort번호 로 호출해 보면, http 서비스가 정상적인 응답을 줍니다. (master ip나 node01 ip 중 어느것을 사용하여도 동일하게 응답을 받을 수 있습니다.)
