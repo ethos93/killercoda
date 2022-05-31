@@ -10,17 +10,17 @@ kubectl create secret generic secret이름 --from-literal=key=value
 
 literal-secret 이라는 이름의 secret에 key는 company, value는 samsung 이라고 만들고 싶다면,
 
-`kubectl create secret generic literal-secret --from-literal=company=Samsung`{{execute}} 로 실행하면 됩니다.
+`kubectl create secret generic literal-secret --from-literal=company=Samsung`{{exec}} 로 실행하면 됩니다.
 
 원하는대로 잘 생성되었는지는 describe를 통해 확인 가능합니다.
 
-`kubectl describe secret literal-secret`{{execute}}
+`kubectl describe secret literal-secret`{{exec}}
 
 configmap 과 다르게 key는 노출되지만, value는 size만 표시 됩니다.
 
 value까지 확인하려면 get 명령을 사용하면 됩니다.
 
-`kubectl get secret literal-secret -o yaml`{{execute}}
+`kubectl get secret literal-secret -o yaml`{{exec}}
 
 base64 encoding이 된 value 값을 확인할 수 있습니다.
 
@@ -37,17 +37,17 @@ base64 encoding이 된 value 값을 확인할 수 있습니다.
 
 먼저 --from-file 을 사용하여 file-secret 라는 이름의 secret을 만듭니다.
 
-`kubectl create secret generic file-secret --from-file=./app.properties`{{execute}}
+`kubectl create secret generic file-secret --from-file=./app.properties`{{exec}}
 
 다음으로 --from-env-file 을 사용하여 file-env-secret 라는 이름의 configmap을 만듭니다.
 
-`kubectl create secret generic file-env-secret --from-env-file=./app.properties`{{execute}}
+`kubectl create secret generic file-env-secret --from-env-file=./app.properties`{{exec}}
 
 두개의 secret 을 만들었고, 앞에서와 동일하게 각각의 secret을 describe를 통해 확인해 보겠습니다.
 
-`kubectl describe secret file-secret`{{execute}}
+`kubectl describe secret file-secret`{{exec}}
 
-`kubectl describe secret file-env-secret`{{execute}}
+`kubectl describe secret file-env-secret`{{exec}}
 
 ## Secret from Yaml
 
@@ -55,7 +55,7 @@ yaml 파일로도 생성할 수 있으며, key:value를 여러쌍 포함시킬 �
 
 단, configmap과 달리 secret을 생성할 때는, value를 base64 encoding한 값으로 작성해야만 합니다.
 
-`touch yaml-secret.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 yaml-secret.yaml 파일을 완성시키거나, `vi yaml-secret.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch yaml-secret.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 yaml-secret.yaml 파일을 완성시키거나, `vi yaml-secret.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: v1
@@ -69,16 +69,16 @@ data:
 
 location의 value는 Jamsil 을 base64 encoding 한 값이며, business의 value는 ITService를 base64 encoding 한 값입니다.
 
-`echo -n 'Jamsil' | base64`{{execute}}
+`echo -n 'Jamsil' | base64`{{exec}}
 
-`echo -n 'ITService' | base64`{{execute}}
+`echo -n 'ITService' | base64`{{exec}}
 
 작성된 yaml을 적용하겠습니다.
-`kubectl apply -f yaml-secret.yaml`{{execute}}
+`kubectl apply -f yaml-secret.yaml`{{exec}}
 
 동일하게 describe로 확인해 봅니다.
 
-`kubectl describe secret yaml-secret`{{execute}}
+`kubectl describe secret yaml-secret`{{exec}}
 
 ## Secret의 사용
 
@@ -86,7 +86,7 @@ Secret은 Pod에서 환경변수로 넘길수가 있습니다.
 
 Secret의 Key와 Value를 Pod으로 전달하는 yaml를 작성해 보겠습니다.
 
-`touch secretpod.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 secretpod.yaml 파일을 완성시키거나, `vi secretpod.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch secretpod.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 secretpod.yaml 파일을 완성시키거나, `vi secretpod.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: v1
@@ -132,12 +132,12 @@ Manifest를 보면, 아주 가벼운 busybox shell 만 포함하고 있는 이�
 
 이제 작성한 Manifest를 통해 Pod을 생성합니다.
 
-`kubectl apply -f secretpod.yaml`{{execute}}
+`kubectl apply -f secretpod.yaml`{{exec}}
 
 해당 pod의 환경변수에 어떤 값들이 들어갔는지 확인해 보겠습니다.
 
-`kubectl exec -it secret-pod -- env`{{execute}} 를 실행해 봅니다. 참고로 env는 linux에서 환경변수의 값들을 출력하는 명령입니다.
+`kubectl exec -it secret-pod -- env`{{exec}} 를 실행해 봅니다. 참고로 env는 linux에서 환경변수의 값들을 출력하는 명령입니다.
 
 마지막으로, Volume으로 Mount된 파일의 내용도 확인해 보겠습니다.
 
-`kubectl exec -it secret-pod -- cat /etc/config/app.properties`{{execute}} 를 실행해 봅니다.
+`kubectl exec -it secret-pod -- cat /etc/config/app.properties`{{exec}} 를 실행해 봅니다.
