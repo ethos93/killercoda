@@ -1,4 +1,5 @@
 이번에는 WordPress를 Kubernetes에 배포하고 문서를 작성해 보는 실습을 진행하겠습니다.
+
 (Killercoda가 제공하는 환경은 Storage 부족으로 정상적으로 서버가 구동되지 않습니다. 동일한 내용으로 다른 환경에서 구동확인을 해보시면 됩니다.)
 
 ## 목표 Architecture
