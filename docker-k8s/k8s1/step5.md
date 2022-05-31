@@ -3,7 +3,7 @@
 Pod를 구성하는 Container의 이미지가 ethos93/go-httpd 였으며, 이것은 go로 만든 단순한 웹서버라고 했습니다.
 웹서버는 외부에 http 서비스를 제공하여야 하니, 한번 호출해 보도록 하겠습니다.
 
-`kubectl get pods -o wide`{{execute}} 를 실행시켜보면, 각 pod 들의 ip를 확인할 수 있습니다. (pod 들의 ip는 cluster 내에서 유효한 내부 ip입니다.)
+`kubectl get pods -o wide`{{exec}} 를 실행시켜보면, 각 pod 들의 ip를 확인할 수 있습니다. (pod 들의 ip는 cluster 내에서 유효한 내부 ip입니다.)
 
 curl 명령을 사용하여 http 서비스를 호출해 보세요. (pod ip는 pod가 생성될 때마다 달라지니 다음과 같이 호출 하시면 됩니다.)
 
