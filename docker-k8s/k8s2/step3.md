@@ -19,7 +19,7 @@ php로 작성되었으며, 요청을 받으면 1~1000000 모든 수의 제곱근
 
 php 서버를 배포하는 yaml파일을 생성해 보겠습니다.
 
-앞서 작성하였던 Deployment를 수정할 것이니 Editor 탭을 통해 파일을 수정하거나, `vi deployment.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+앞서 작성하였던 Deployment를 수정할 것이니 Editor 탭을 통해 파일을 수정하거나, `vi deployment.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: apps/v1
@@ -67,19 +67,19 @@ Kubernetes의 CPU 1개는 클라우드 공급자용 vCPU/Core 1개 와 베어메
 
 Deployment를 수정하였다면, 변경사항을 반영합니다.
 
-`kubectl apply -f deployment.yaml`{{execute}}
+`kubectl apply -f deployment.yaml`{{exec}}
 
 RollingUpdate를 통해 1개의 Pod 이미지가 교체된 뒤, 나머지 9개의 Pod은 자동으로 종료될 것입니다.
 
-`kubectl get pods`{{execute}}
+`kubectl get pods`{{exec}}
 
 앞서 만들었던 curlpod를 통해 php 서버가 잘 동작하는지 확인해 봅니다.
 
-`kubectl exec -it curlpod -- curl httpd-nodeport-service`{{execute}}
+`kubectl exec -it curlpod -- curl httpd-nodeport-service`{{exec}}
 
 다음으로는 Horizontal Pod Autoscaler를 정의한 yaml파일을 생성해주어야합니다.
 
-`touch hpa.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 hpa.yaml 파일을 완성시키거나, `vi hpa.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch hpa.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 hpa.yaml 파일을 완성시키거나, `vi hpa.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: autoscaling/v2beta2
@@ -107,22 +107,22 @@ spec:
 
 이제 Horizontal Pod Autoscaler 로 적용해 줍니다.
 
-`kubectl apply -f hpa.yaml`{{execute}}
+`kubectl apply -f hpa.yaml`{{exec}}
 
-적용 후에 `kubectl get hpa -o wide`{{execute}} 를 실행해 보면, 현재 적용되어 있는 hpa를 확인할 수 있습니다.
+적용 후에 `kubectl get hpa -o wide`{{exec}} 를 실행해 보면, 현재 적용되어 있는 hpa를 확인할 수 있습니다.
 
 curlpod를 통해 php 서비스를 지속적으로 호출하여 부하를 발생시킵니다.
 
-`while true; do kubectl exec -it curlpod -- curl httpd-nodeport-service; done`{{execute}}
+`while true; do kubectl exec -it curlpod -- curl httpd-nodeport-service; done`{{exec}}
 
 Horizontal Pod Autoscaler 에서 maxReplicas의 수를 크게 지정하였더라도, Kubernetes Cluster가 처리할 수 있는 전체 cpu, memory Resource의 한계에 다다르면 더 이상 scale out이 되지는 않습니다.
 
 다음과 같이 새로운 Tab을 열어 -w 옵션을 주고 get pods을 하면, 정보가 변경되는 내용이 지속적으로 출력되게 할 수 있습니다.
 
-`kubectl get pods -w`{{execute}}
+`kubectl get pods -w`{{exec}}
 
 부하가 계속 주어질 때 Pod의 개수 변화를 확인 할 수 있습니다. (부하량이 충분하지 않으면, Pod이 빠르게 Scale Out 되지는 않습니다.)
 
 while 문으로 부하를 주고 있는 terminal에서 <kbd>Ctrl</kbd>+<kbd>C</kbd> 로 부하를 멈추게 되면, 일정 시간이 지난 후에 다시 Pod의 개수가 변경되는 것을 확인할 수 있습니다.
 
-`^C`{{execute}}
+`^C`{{exec}}
