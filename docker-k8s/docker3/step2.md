@@ -9,7 +9,7 @@ HelloDocker.java 파일은 그대로 두고 Dockerfile만 수정해 보겠습니
 Editor 탭에서 Dockerfile을 아래와 같이 수정합니다.
 
 역시 vi가 익숙하시면 vi를 사용하셔도 됩니다.
-`vi Dockerfile`{{execute}}
+`vi Dockerfile`{{exec}}
 
 ```Dockerfile
 FROM openjdk:8 as build-stage
@@ -37,18 +37,18 @@ Dockerfile을 잘 수정하였다면, 이제 이미지를 생성합니다.
 ## docker 이미지 생성
 hellodocker이미지를 v2 tag를 붙여서 생성합니다.
 
-`docker build -t hellodocker:v2 .`{{execute}}
+`docker build -t hellodocker:v2 .`{{exec}}
 
 출력되는 로그를 보시면, build-stage를 위한 Base Image는 이미 이전에 받았기 때문에, production-stage를 위한 Base Image를 Pull 한 뒤에 Dockerfile에 명시된 대로, 진행됩니다.
 
 ## docker 이미지 확인
 hellodocker 이미지가 정상적으로 생성 되었는지 확인합니다.
 
-`docker images`{{execute}}
+`docker images`{{exec}}
 
 v1 과 v2 는 Java Application은 동일하지만, base image의 차이때문에 이미지 전체의 사이즈가 크게 차이가 납니다.
 이와 같이 어떻게 Dockerfile를 작성하느냐에 따라 최종 이미지의 사이즈가 달라질 수 있으며, 이러한 차이가 이미지를 생성할때, Registry에 Push할때, Pull할때 네트워크 및 스토리지, 소요 시간등의 차이를 가져오기 때문에 가급적 이미지를 최소화 할 수 있도록 하는 노력이 필요합니다.
 
 생성된 이미지가 잘 실행되는지도 확인합니다.
 
-`docker run hellodocker:v2`{{execute}}
+`docker run hellodocker:v2`{{exec}}
