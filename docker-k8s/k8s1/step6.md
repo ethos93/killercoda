@@ -1,6 +1,6 @@
 ClusterIP Type의 서비스를 생성해 보겠습니다.
 
-`touch clusterip_svc.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 clusterip_svc.yaml 파일을 완성시키거나, `vi clusterip_svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch clusterip_svc.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 clusterip_svc.yaml 파일을 완성시키거나, `vi clusterip_svc.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: v1
@@ -23,11 +23,11 @@ Type을 보면 ClusterIP로 지정되어 있으며, ClusterIP는 Service의 Defa
 
 apply로 yaml 파일을 통해 object를 생성해 보겠습니다.
 
-`kubectl apply -f clusterip_svc.yaml`{{execute}}
+`kubectl apply -f clusterip_svc.yaml`{{exec}}
 
 명령을 실행 시키면, "service/httpd-clusterip-service created" 라고 출력되면서 서비스가 만들어집니다.
 
-`kubectl get services`{{execute}} 를 통해 httpd-clusterip-service 라는 서비스가 하나가 생성된 것을 확인할 수 있습니다.
+`kubectl get services`{{exec}} 를 통해 httpd-clusterip-service 라는 서비스가 하나가 생성된 것을 확인할 수 있습니다.
 
 <pre>
 NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
@@ -42,11 +42,11 @@ CLUSTER-IP는 Kubernetes cluster 내에서 사용가능한 IP이며 다른 Pod�
 CoreDNS는 Cluster내부에서만 사용이 가능하니, Debugging을 위한 Pod을 하나 생성해 보겠습니다. 아래 명령을 통해 debugging용 pod을 생성합니다.
 curl을 포함하고 있는 아주 작은 container image 입니다.
 
-`kubectl run curlpod --image=radial/busyboxplus:curl --command -- /bin/sh -c "while true; do echo hi; sleep 10; done"`{{execute}}
+`kubectl run curlpod --image=radial/busyboxplus:curl --command -- /bin/sh -c "while true; do echo hi; sleep 10; done"`{{exec}}
 
 curlpod 라는 pod 이 생성되었으니, 이제 curlpod 에서 서버스 이름으로 http 서버를 호출해 보겠습니다.
 
-`kubectl exec -it curlpod -- curl httpd-clusterip-service`{{execute}} 으로 호출해 보면, curlpod 안에서 curl 명령이 실행됩니다.
+`kubectl exec -it curlpod -- curl httpd-clusterip-service`{{exec}} 으로 호출해 보면, curlpod 안에서 curl 명령이 실행됩니다.
 
 응답이 정상적으로 오는 것을 확인할 수 있습니다. 동일한 exec 명령을 여러번 실행시켜 보면, 응답 중 hostname이 변하는 것도 확인할 수 있습니다.
 이것은, 서비스를 통해 pod으로 호출되기 때문입니다.
