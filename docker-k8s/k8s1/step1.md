@@ -2,11 +2,11 @@ Kubernetes에 Application을 배포하고, 외부에서 접속 할 수 있도록
 
 현재 kubernetes 환경의 상태를 확인하기 위해서는,
 
-`kubectl cluster-info`{{execute}}
+`kubectl cluster-info`{{exec}}
 
-`kubectl get nodes`{{execute}}
+`kubectl get nodes`{{exec}}
 
-`kubectl get pods -A`{{execute}}
+`kubectl get pods -A`{{exec}}
 
 를 각각 실행시켜 보시면 됩니다.
 
