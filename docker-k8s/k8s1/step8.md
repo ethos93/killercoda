@@ -1,6 +1,6 @@
 마지막으로 LoadBalancer Type의 서비스를 생성해 보겠습니다.
 
-`touch loadbalancer_svc.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 loadbalancer_svc.yaml 파일을 완성시키거나, `vi loadbalancer_svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch loadbalancer_svc.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 loadbalancer_svc.yaml 파일을 완성시키거나, `vi loadbalancer_svc.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: v1
@@ -23,11 +23,11 @@ Type을 보면 LoadBalancer로 지정되어 있습니다.
 
 apply로 yaml 파일을 통해 object를 생성해 보겠습니다.
 
-`kubectl apply -f loadbalancer_svc.yaml`{{execute}}
+`kubectl apply -f loadbalancer_svc.yaml`{{exec}}
 
 명령을 실행 시키면, "service/httpd-loadbalancer-service created" 라고 출력되면서 서비스가 만들어집니다.
 
-`kubectl get services`{{execute}} 를 통해 httpd-loadbalancer-service 라는 서비스가 추가로 생성된 것을 확인할 수 있습니다.
+`kubectl get services`{{exec}} 를 통해 httpd-loadbalancer-service 라는 서비스가 추가로 생성된 것을 확인할 수 있습니다.
 
 <pre>
 NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
