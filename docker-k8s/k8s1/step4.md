@@ -10,7 +10,7 @@ Deployment는 Image의 버전 변경 시 Update 전략에 따라 RollingUpdate �
 
 Deployment를 생성해 보도록 하겠습니다.
 
-`touch deployment.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 deployment.yaml 파일을 완성시키거나, `vi deployment.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch deployment.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 deployment.yaml 파일을 완성시키거나, `vi deployment.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: apps/v1
@@ -48,9 +48,9 @@ Spec을 보면, strategy 라는게 ReplicaSet에서 추가되었고, RollingUpda
 
 나머지는 ReplicaSet과 동일합니다.
 
-이제 `kubectl apply -f deployment.yaml`{{execute}} 명령을 통해 Deployment 을 생성합니다.
+이제 `kubectl apply -f deployment.yaml`{{exec}} 명령을 통해 Deployment 을 생성합니다.
 
 명령을 실행 시키면, "deployment.apps/httpd-deployment created" 라고 출력되면서 Deployment 가 만들어집니다.
 
-`kubectl get deployments`{{execute}} 를 통해 생성된 Deployment 를 확인할 수 있으며, `kubectl get replicasets`{{execute}} 를 통해 생성된 ReplicaSet을 확인할 수 있고, `kubectl get pods`{{execute}} 를 통해 10개의 Pod가 생성된 것을 확인할 수 있습니다.
+`kubectl get deployments`{{exec}} 를 통해 생성된 Deployment 를 확인할 수 있으며, `kubectl get replicasets`{{exec}} 를 통해 생성된 ReplicaSet을 확인할 수 있고, `kubectl get pods`{{exec}} 를 통해 10개의 Pod가 생성된 것을 확인할 수 있습니다.
 ReplicaSet은 Deployment 이름 - hash 값으로 자동 생성되고, Pod의 이름은 ReplicaSet 이름 - hash 값으로 자동 생성됩니다.
