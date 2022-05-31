@@ -1,6 +1,6 @@
 우선 가장 기본 단위인 POD를 생성하여 보겠습니다.
 
-`touch pod.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 pod.yaml 파일을 완성시키거나, `vi pod.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch pod.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 pod.yaml 파일을 완성시키거나, `vi pod.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: v1
@@ -29,8 +29,8 @@ yaml 파일을 통해 object를 생성하는 방법은, kubectl create -f "yaml 
 또 apply 도 사용할 수 있는데, apply는 기존에 동일한 이름의 object가 없다면, create를, 동일한 이름의 object가 없다면 replace를 시켜줍니다.
 apply로 yaml 파일을 통해 object를 생성해 보겠습니다.
 
-`kubectl apply -f pod.yaml`{{execute}}
+`kubectl apply -f pod.yaml`{{exec}}
 
 명령을 실행 시키면, "pod/httpd created" 라고 출력되면서 pod 이 만들어집니다.
 
-`kubectl get pods`{{execute}} 를 통해 httpd Pod 하나가 생성된 것을 확인할 수 있습니다.
+`kubectl get pods`{{exec}} 를 통해 httpd Pod 하나가 생성된 것을 확인할 수 있습니다.
