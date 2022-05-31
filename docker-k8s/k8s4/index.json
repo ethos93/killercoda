@@ -18,6 +18,14 @@
       {
         "title": "Wordpress 배포 확인 및 테스트",
         "text": "step4.md"
+      },
+      {
+        "title": "직접 해 보세요",
+        "text": "step5.md"
+      },
+      {
+        "title": "Wordpress Manifest",
+        "text": "step6.md"
       }
     ],
     "intro": {
