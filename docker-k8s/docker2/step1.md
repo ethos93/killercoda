@@ -7,24 +7,24 @@ docker pull 은 이미 앞서 사용했던 Command 입니다. 그리고, 반드�
 
 Jenkins Docker Image를 pull 받아야 하니, 다음과 같이 command를 사용합니다.
 
-`docker pull jenkins/jenkins:2.277.1-lts-alpine`{{execute}}
+`docker pull jenkins/jenkins:2.277.1-lts-alpine`{{exec}}
 
 조금 더 작은 사이즈의 이미지를 pull 하기 위해 alpine tag 가 붙은 이미지를 pull 받았습니다.
 
 다음 command를 통해 local에 받아진 image를 확인해 봅니다.
 
-`docker images`{{execute}}
+`docker images`{{exec}}
 
 좀 더 상세한 이미지 정보를 확인하기 위해서는 inspect 명령을 사용할 수 있습니다.
 
-`docker inspect jenkins/jenkins:2.277.1-lts-alpine`{{execute}}
+`docker inspect jenkins/jenkins:2.277.1-lts-alpine`{{exec}}
 
 ## Docker Run
 이미지로 부터 Container를 생성하여 Process를 구동시키는 명령은 run 입니다.
 
 한번 run을 통해 구동시켜 보겠습니다. --name 옵션은 docker conatiner의 이름을 지정하는 옵션입니다.
 
-`docker run --name myjenkins jenkins/jenkins:2.277.1-lts-alpine`{{execute}}
+`docker run --name myjenkins jenkins/jenkins:2.277.1-lts-alpine`{{exec}}
 
 Jenkins 구동 로그가 보여지면서 Process 가 실행되는 것을 확인할 수 있습니다.
 
@@ -34,15 +34,15 @@ Jenkins를 사용해 보신 분들은 아시겠지만, Jenkins는 Web UI로 구�
 
 우선 구동 중인 process 를 종료하기 위해 <kbd>Ctrl</kbd>+<kbd>C</kbd> 를 통해 process 를 종료시킵니다.
 
-`^C`{{execute ctrl-seq}}
+`^C`{{exec}}
 
 Container에 대한 확인은 ps 이며, 특히 종료된 conatiner를 포함한 확인은 -a 옵션을 추가하면 됩니다.
 
-`docker ps -a`{{execute}}
+`docker ps -a`{{exec}}
 
 종료된 Container를 삭제하는 Command는 rm 입니다.
 
-`docker rm myjenkins`{{execute}}
+`docker rm myjenkins`{{exec}}
 
 앞서 생성했던 myjenkins container를 Daemon 모드로 구동시키면서 Web UI 접속이 가능하도록 옵션을 추가하겠습니다.
 
@@ -50,15 +50,15 @@ Container에 대한 확인은 ps 이며, 특히 종료된 conatiner를 포함한
 
 volume을 생성하는 command는 다음과 같습니다.
 
-`docker volume create myvolume`{{execute}}
+`docker volume create myvolume`{{exec}}
 
 volume 이 잘 생성되었는지에 대한 확인은 volume ls를 하면 됩니다.
 
-`docker volume ls`{{execute}}
+`docker volume ls`{{exec}}
 
 이제 jenkins를 다시 구동시켜 보도록 하겠습니다.
 
-`docker run --name myjenkins -d -p 8080:8080 -v myvolume:/var/jenkins_home -e JAVA_OPTS=-Dhudson.footerURL=http://www.samsungsds.com jenkins/jenkins:2.277.1-lts-alpine`{{execute}}
+`docker run --name myjenkins -d -p 8080:8080 -v myvolume:/var/jenkins_home -e JAVA_OPTS=-Dhudson.footerURL=http://www.samsungsds.com jenkins/jenkins:2.277.1-lts-alpine`{{exec}}
 
 명령이 많이 길어졌습니다.
 
