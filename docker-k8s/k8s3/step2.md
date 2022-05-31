@@ -10,11 +10,11 @@ kubectl create configmap configmap이름 --from-literal=key=value
 
 literal-config 이라는 이름의 configmap에 key는 company, value는 samsung 이라고 만들고 싶다면,
 
-`kubectl create configmap literal-config --from-literal=company=Samsung`{{execute}} 로 실행하면 됩니다.
+`kubectl create configmap literal-config --from-literal=company=Samsung`{{exec}} 로 실행하면 됩니다.
 
 원하는대로 잘 생성되었는지는 describe를 통해 확인 가능합니다.
 
-`kubectl describe configmaps literal-config`{{execute}}
+`kubectl describe configmaps literal-config`{{exec}}
 
 ## ConfigMap from File
 
@@ -29,7 +29,7 @@ literal-config 이라는 이름의 configmap에 key는 company, value는 samsung
 
 우선 Properties 파일을 하나 만들어 봅니다.
 
-`touch app.properties`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 app.properties 파일을 완성시키거나, `vi app.properties`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch app.properties`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 app.properties 파일을 완성시키거나, `vi app.properties`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```properties
 database.url=192.168.0.88
@@ -43,17 +43,17 @@ database.password=elqlvotmdnjem
 
 먼저 --from-file 을 사용하여 file-config 라는 이름의 configmap을 만듭니다.
 
-`kubectl create configmap file-config --from-file=./app.properties`{{execute}}
+`kubectl create configmap file-config --from-file=./app.properties`{{exec}}
 
 다음으로 --from-env-file 을 사용하여 file-env-config 라는 이름의 configmap을 만듭니다.
 
-`kubectl create configmap file-env-config --from-env-file=./app.properties`{{execute}}
+`kubectl create configmap file-env-config --from-env-file=./app.properties`{{exec}}
 
 두개의 configmap 을 만들었고, 앞에서와 동일하게 각각의 configmap을 describe를 통해 확인해 보겠습니다.
 
-`kubectl describe configmaps file-config`{{execute}}
+`kubectl describe configmaps file-config`{{exec}}
 
-`kubectl describe configmaps file-env-config`{{execute}}
+`kubectl describe configmaps file-env-config`{{exec}}
 
 Data 부분에 Key와 Value가 각각 어떻게 저장되었는지 확인할 수 있습니다.
 
@@ -61,7 +61,7 @@ Data 부분에 Key와 Value가 각각 어떻게 저장되었는지 확인할 수
 
 yaml 파일로도 생성할 수 있으며, key:value를 여러쌍 포함시킬 수도 있습니다.
 
-`touch yaml-config.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 yaml-config.yaml 파일을 완성시키거나, `vi yaml-config.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch yaml-config.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 yaml-config.yaml 파일을 완성시키거나, `vi yaml-config.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: v1
@@ -74,11 +74,11 @@ data:
 ```
 
 작성된 yaml을 적용하겠습니다.
-`kubectl apply -f yaml-config.yaml`{{execute}}
+`kubectl apply -f yaml-config.yaml`{{exec}}
 
 동일하게 describe로 확인해 봅니다.
 
-`kubectl describe configmaps yaml-config`{{execute}}
+`kubectl describe configmaps yaml-config`{{exec}}
 
 ## ConfigMap의 사용
 
@@ -86,7 +86,7 @@ ConfigMap은 Pod에서 환경변수로 넘길수가 있습니다.
 
 ConfigMap의 Key와 Value를 Pod으로 전달하는 yaml를 작성해 보겠습니다.
 
-`touch configmappod.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 configmappod.yaml 파일을 완성시키거나, `vi configmappod.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch configmappod.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 configmappod.yaml 파일을 완성시키거나, `vi configmappod.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: v1
@@ -132,13 +132,13 @@ Manifest를 보면, 아주 가벼운 busybox shell 만 포함하고 있는 이�
 
 이제 작성한 Manifest를 통해 Pod을 생성합니다.
 
-`kubectl apply -f configmappod.yaml`{{execute}}
+`kubectl apply -f configmappod.yaml`{{exec}}
 
 해당 pod의 환경변수에 어떤 값들이 들어갔는지 확인해 보겠습니다.
 
-`kubectl exec -it configmap-pod -- env`{{execute}} 를 실행해 봅니다. 참고로 env는 linux에서 환경변수의 값들을 출력하는 명령입니다.
+`kubectl exec -it configmap-pod -- env`{{exec}} 를 실행해 봅니다. 참고로 env는 linux에서 환경변수의 값들을 출력하는 명령입니다.
 
 마지막으로, Volume으로 Mount된 파일의 내용도 확인해 보겠습니다.
 
-`kubectl exec -it configmap-pod -- cat /etc/config/app.properties`{{execute}} 를 실행해 봅니다.
+`kubectl exec -it configmap-pod -- cat /etc/config/app.properties`{{exec}} 를 실행해 봅니다.
 
