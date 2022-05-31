@@ -4,17 +4,17 @@
 
 Kubernetes가 정상적으로 구동이 되었는지 확인을 한 뒤에 메트릭 서버를 배포합니다.
 
-`kubectl get nodes`{{execute}} 를 실행하여, 두개의 node가 모두 Ready 인 것을 확인한 후 진행합니다.
+`kubectl get nodes`{{exec}} 를 실행하여, 두개의 node가 모두 Ready 인 것을 확인한 후 진행합니다.
 
 메트릭을 사용하기 위한 Manifest는 /root/metrics-server/components.yaml 에 구성되어 있으니, 이를 먼저 배포 합니다.
 
-`kubectl apply -f /root/metrics-server/components.yaml`{{execute}} 를 실행하면, 메트릭 서버가 배포됩니다.
+`kubectl apply -f /root/metrics-server/components.yaml`{{exec}} 를 실행하면, 메트릭 서버가 배포됩니다.
 
 배포된 이후에 일정시간이 지나면 메트릭 정보를 수집하여 kubectl top 명령을 통해 확인 할 수 있습니다.
 
 Kubernetes Deployment 전략을 지정하고 Rollback을 실습하기 위해 앞서 생성했던 것과 동일한 Deployment를 생성해 보겠습니다.
 
-`touch deployment.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 deployment.yaml 파일을 완성시키거나, `vi deployment.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch deployment.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 deployment.yaml 파일을 완성시키거나, `vi deployment.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: apps/v1
@@ -47,11 +47,11 @@ spec:
           protocol: TCP
 ```
 
-이제 `kubectl apply -f deployment.yaml`{{execute}} 명령을 통해 Deployment 을 생성합니다.
+이제 `kubectl apply -f deployment.yaml`{{exec}} 명령을 통해 Deployment 을 생성합니다.
 
 다음으로, 앞서 작성한 것과 동일한 NodePort Type의 서비스도 생성해 보겠습니다.
 
-`touch nodeport_svc.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 nodeport_svc.yaml 파일을 완성시키거나, `vi nodeport_svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch nodeport_svc.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 nodeport_svc.yaml 파일을 완성시키거나, `vi nodeport_svc.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: v1
@@ -68,15 +68,15 @@ spec:
   type: NodePort
 ```
 
-`kubectl apply -f nodeport_svc.yaml`{{execute}}
+`kubectl apply -f nodeport_svc.yaml`{{exec}}
 
 아래 명령을 통해 debugging용 pod을 생성합니다.
 
 curl을 포함하고 있는 아주 작은 container image 입니다.
 
-`kubectl run curlpod --image=radial/busyboxplus:curl --command -- /bin/sh -c "while true; do echo hi; sleep 10; done"`{{execute}}
+`kubectl run curlpod --image=radial/busyboxplus:curl --command -- /bin/sh -c "while true; do echo hi; sleep 10; done"`{{exec}}
 
 curlpod 라는 pod 이 생성되었으니, 이제 curlpod 에서 서버스 이름으로 http 서버를 호출해 보겠습니다.
 
-`kubectl exec -it curlpod -- curl httpd-nodeport-service`{{execute}} 으로 호출해 보면, curlpod 안에서 curl 명령이 실행됩니다.
+`kubectl exec -it curlpod -- curl httpd-nodeport-service`{{exec}} 으로 호출해 보면, curlpod 안에서 curl 명령이 실행됩니다.
 
