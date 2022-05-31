@@ -10,7 +10,7 @@ Jenkins는 처음 구동될 때, 관리자에 의해 안전하게 설치되는 �
 
 logs 라는 command를 사용하면 됩니다.
 
-`docker logs myjenkins`{{execute}}
+`docker logs myjenkins`{{exec}}
 
 위의 명령을 실행하면 conatiner에서 system out 이나 system error로 출력되는 log를 확인할 수 있습니다. -f 옵션을 함께 사용하면 출력되는 로그들을 계속 확인도 가능합니다.
 
@@ -24,7 +24,7 @@ Web UI에 출력된 내용을 다시 보시면 log 에서 찾거나 /var/jenkins
 
 exec 라는 command를 사용하면 됩니다.
 
-`docker exec myjenkins cat /var/jenkins_home/secrets/initialAdminPassword`{{execute}}
+`docker exec myjenkins cat /var/jenkins_home/secrets/initialAdminPassword`{{exec}}
 
 위의 명령을 실행하면 container 내부에서 cat /var/jenkins_home/secrets/initialAdminPassword 를 실행한 결과가 출력됩니다.
 
@@ -34,4 +34,4 @@ exec 라는 command를 사용하면 됩니다.
 
 마지막으로, volume에 jenkins 파일들이 생성되었는지도 확인해 봅니다.
 
-`ls -la /var/lib/docker/volumes/myvolume/_data`{{execute}}
+`ls -la /var/lib/docker/volumes/myvolume/_data`{{exec}}
