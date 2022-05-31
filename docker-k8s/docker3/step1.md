@@ -15,7 +15,7 @@ public class HelloDocker {
 		System.out.println("Hello Docker!!!");
 	}
 }
-```{{copy}}
+```
 
 java로 실행시 "Hello Docker!!!"를 출력하고 종료되는 아주 간단한 Application 입니다.
 원하신다면 Java code를 직접 수정해 보셔도 좋습니다.
@@ -36,7 +36,7 @@ COPY HelloDocker.java /hello/
 WORKDIR /hello
 RUN javac HelloDocker.java
 CMD ["java","HelloDocker"]
-```{{copy}}
+```
 
 Dockerfile의 각 라인을 설명하자면,
 1. openjdk8이 포함된 이미지를 생성하며
