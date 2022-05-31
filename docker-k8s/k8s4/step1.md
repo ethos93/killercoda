@@ -1,9 +1,5 @@
 이번에는 WordPress를 Kubernetes에 배포하고 문서를 작성해 보는 실습을 진행하겠습니다.
 
-실습을 위해 디렉토리를 이동합니다.
-
-`cd /root/lab`{{execute}}
-
 ## 목표 Architecture
 
 WordPress 홈페이지 (https://wordpress.org/support/article/requirements/) 에서 확인하면, WordPress는 MySQL이나 MariaDB를 Database로 사용할 수 있다고 되어 있습니다.
