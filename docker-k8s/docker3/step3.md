@@ -6,11 +6,11 @@ Go 언어에 대해 익숙하신 분도 계시고, 처음 접하시는 분도 �
 이번에는, Go 언어로 작성된 "Hello Docker!!!"를 출력하는 간단한 Docker Image를 생성해 보도록 하겠습니다.
 
 ## Go Application
-`touch HelloDocker.go`{{execute}} 를 통해 HelloDocker.go 파일을 생성하고
+`touch HelloDocker.go`{{exec}} 를 통해 HelloDocker.go 파일을 생성하고
 Editor 탭에서 아래 내용으로 파일을 완성합니다.
 
 vi가 익숙하시면 vi를 사용하셔도 됩니다.
-`vi HelloDocker.go`{{execute}}
+`vi HelloDocker.go`{{exec}}
 
 ```go
 package main
@@ -27,7 +27,7 @@ func main() {
 Editor 탭에서 Dockerfile을 아래와 같이 수정합니다.
 
 역시 vi가 익숙하시면 vi를 사용하셔도 됩니다.
-`vi Dockerfile`{{execute}}
+`vi Dockerfile`{{exec}}
 
 ```Dockerfile
 FROM golang:1.15.8-buster AS build-stage
@@ -53,14 +53,14 @@ Dockerfile을 잘 수정하였다면, 이제 이미지를 생성합니다.
 ## docker 이미지 생성
 hellodocker이미지를 v3 tag를 붙여서 생성합니다.
 
-`docker build -t hellodocker:v3 .`{{execute}}
+`docker build -t hellodocker:v3 .`{{exec}}
 
 출력되는 로그를 보시면, production-stage를 위한 Base Image는 scratch 이미지이기 때문에 별도로 다운 받는 것 없이 Dockerfile에 명시된 대로, 진행됩니다.
 
 ## docker 이미지 확인
 hellodocker 이미지가 정상적으로 생성 되었는지 확인합니다.
 
-`docker images`{{execute}}
+`docker images`{{exec}}
 
 v1 과 v2와 달리 v3의 이미지 사이즈는 엄청나게 차이가 납니다.
 아무것도 포함되지 않은 Scratch 이미지에 Go 실행파일 하나만 포함되었기 때문입니다.
@@ -69,4 +69,4 @@ Kubernetes의 엔진을 포함한 대부분이 Go 언어로 개발되었으며, 
 
 생성된 이미지가 잘 실행되는지도 확인합니다.
 
-`docker run hellodocker:v3`{{execute}}
+`docker run hellodocker:v3`{{exec}}
