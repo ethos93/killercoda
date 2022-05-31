@@ -17,8 +17,8 @@ WORDPRESS_DB_HOST는 Value에 서비스 명을 직접 적어주고, 나머지는
 
 1. WordPress Deployment
 
-`touch wordpress-deployment.yaml`{{execute}}
+`touch wordpress-deployment.yaml`{{exec}}
 
 2. WordPress Service
 
-`touch wordpress-service.yaml`{{execute}}
+`touch wordpress-service.yaml`{{exec}}
