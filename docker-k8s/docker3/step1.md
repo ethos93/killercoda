@@ -24,11 +24,11 @@ java로 실행시 "Hello Docker!!!"를 출력하고 종료되는 아주 간단�
 이제 앞서 만든 Java Application이 구동되는 docker 이미지를 만듭니다.
 
 docker 이미지는 일반적으로 Dockerfile를 통해 build하여 만듭니다.
-`touch Dockerfile`{{execute}} 를 통해 Dockerfile 파일을 생성하고
+`touch Dockerfile`{{exec}} 를 통해 Dockerfile 파일을 생성하고
 Editor 탭에서 아래 내용으로 파일을 완성합니다.
 
 역시 vi가 익숙하시면 vi를 사용하셔도 됩니다.
-`vi Dockerfile`{{execute}}
+`vi Dockerfile`{{exec}}
 
 ```Dockerfile
 FROM openjdk:8
