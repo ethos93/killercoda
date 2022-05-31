@@ -26,7 +26,7 @@ done
 
 ## Pod Manifest
 
-`touch fortune-httpd.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 fortune-httpd.yaml 파일을 완성시키거나, `vi fortune-httpd.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch fortune-httpd.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 fortune-httpd.yaml 파일을 완성시키거나, `vi fortune-httpd.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: v1
@@ -61,7 +61,7 @@ Apache Httpd 이미지를 사용하는 web-server Container에서는 html Volume
 
 작성된 yaml을 적용하겠습니다.
 
-`kubectl apply -f fortune-httpd.yaml`{{execute}}
+`kubectl apply -f fortune-httpd.yaml`{{exec}}
 
 Container를 두개 포함하고 있는 Pod 가 생성되면서, emptyDir 볼륨도 생성이 됩니다.
 
@@ -69,9 +69,9 @@ Container를 두개 포함하고 있는 Pod 가 생성되면서, emptyDir 볼륨
 
 Pod이 정상적으로 생성되었는지 확인 후 여기에 연결할 서비스도 만들어 보겠습니다.
 
-`kubectl get pods`{{execute}}
+`kubectl get pods`{{exec}}
 
-`touch fortune-svc.yaml`{{execute}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 fortune-svc.yaml 파일을 완성시키거나, `vi fortune-svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+`touch fortune-svc.yaml`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 fortune-svc.yaml 파일을 완성시키거나, `vi fortune-svc.yaml`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
 ```yaml
 apiVersion: v1
@@ -92,11 +92,11 @@ NodePort Service 에 대한 Menifest 입니다.
 
 작성된 yaml을 적용하겠습니다.
 
-`kubectl apply -f fortune-svc.yaml`{{execute}}
+`kubectl apply -f fortune-svc.yaml`{{exec}}
 
 Service가 생성되었으니, 이제 nodePort를 확인하고 한번 호출해 보겠습니다.
 
-`kubectl get svc`{{execute}}
+`kubectl get svc`{{exec}}
 
 curl 127.0.0.1:노드포트 를 실행하면 10초마다 달라지는 출력을 확인할 수 있습니다.
 
