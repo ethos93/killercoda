@@ -6,7 +6,7 @@ https://spring.io/guides/gs/spring-boot/
 
 source 코드를 가져온 뒤에 편집하여 사용하시면 됩니다.
 
-`git clone https://github.com/spring-guides/gs-spring-boot.git`{{execute}}
+`git clone https://github.com/spring-guides/gs-spring-boot.git`{{exec}}
 
 /root/gs-spring-boot/initial project를 통해 web application을 작성할 수 있습니다.
 
