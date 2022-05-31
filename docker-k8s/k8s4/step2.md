@@ -28,11 +28,11 @@ kubectl create secret generic secret이름 --from-literal=key1=value1 --from-lit
 
 1. MySQL Deployment
 
-`touch mysql-deployment.yaml`{{execute}}
+`touch mysql-deployment.yaml`{{exec}}
 
 2. MySQL Service
 
-`touch mysql-service.yaml`{{execute}}
+`touch mysql-service.yaml`{{exec}}
 
 deployment와 service를 Editor 탭에서 작성하시면 됩니다.
 
