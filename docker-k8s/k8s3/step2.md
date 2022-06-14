@@ -31,6 +31,8 @@ literal-config 이라는 이름의 configmap에 key는 company, value는 samsung
 
 `touch app.properties`{{exec}} 를 통해 다음을 선택하여 파일을 생성한 뒤 Editor 탭에서 아래 내용으로 app.properties 파일을 완성시키거나, `vi app.properties`{{exec}} 를 통해 vi를 사용하셔도 됩니다.
 
+아래 properties 파일은 교육을 위한 예시이며, 실제 Database에 대한 정보가 아닙니다.
+
 ```properties
 database.url=192.168.0.88
 database.port=5432
